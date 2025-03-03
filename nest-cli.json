@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@tsailab/schematics",
+  "sourceRoot": "apps/x-admin/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/x-admin/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/x-admin",
+  "defaultLibraryPrefix": "@xtsai",
+  "projects": {
+    "x-admin": {
+      "type": "application",
+      "root": "apps/x-admin",
+      "entryFile": "main",
+      "sourceRoot": "apps/x-admin/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/x-admin/tsconfig.app.json"
+      }
+    },
+    "core": {
+      "type": "library",
+      "root": "packages/core",
+      "entryFile": "index",
+      "sourceRoot": "packages/core/src",
+      "compilerOptions": {
+        "tsConfigPath": "packages/core/tsconfig.pkg.json"
+      }
+    },
+    "system": {
+      "type": "library",
+      "root": "packages/system",
+      "entryFile": "index",
+      "sourceRoot": "packages/system/src",
+      "compilerOptions": {
+        "tsConfigPath": "packages/system/tsconfig.pkg.json"
+      }
+    }
+  }
+}
