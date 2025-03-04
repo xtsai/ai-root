@@ -14,7 +14,7 @@ export class HealthController {
   async beat() {
     try {
       const data = await this.redisService.getData('xai-test');
-      const opts = await this.systemService.getSystemConfig();
+      const opts = await this.systemService.getConfigOptions();
       this.logger.warn(data, opts);
       return opts;
     } catch (error) {

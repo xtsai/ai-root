@@ -1,7 +1,7 @@
 import { Column, Entity } from 'typeorm';
 import { Transform, Type } from 'class-transformer';
 import { StatusEnum } from '@tsailab/core-types';
-import { BaseSimpleEntity} from '@xtsai/core'
+import { BaseSimpleEntity } from '@xtsai/core';
 
 @Entity({
   name: 'sys_region',

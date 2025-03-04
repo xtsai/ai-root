@@ -5,7 +5,7 @@ import { Column, Entity } from 'typeorm';
 
 @Entity({
   name: 'sys_dict_item',
-  synchronize:true
+  synchronize: true,
 })
 export class SysDictItemEntity extends CommonEntity {
   @Type(() => Number)

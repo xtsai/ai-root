@@ -17,6 +17,6 @@ curl --location 'https://127.0.0.1:16489/v1/auth/login' \
 
 # Get health
 
-curl --location 'https://127.0.0.1:3000/health' 
+curl --location 'http://127.0.0.1:16489/health' 
 
 ```

@@ -1,3 +1,17 @@
-import {SysDictEntity,SysDictItemEntity,SysRegionEntity} from './index'
+import {
+  SysDictEntity,
+  SysDictItemEntity,
+  SysRegionEntity,
+  CustomUserEntity,
+  SystemUserEntity,
+  OrganizationEntity,
+} from './index';
 
-export const registedEntities = [SysDictEntity,SysDictItemEntity,SysRegionEntity]
+export const registedEntities = [
+  CustomUserEntity,
+  SystemUserEntity,
+  SysDictEntity,
+  SysDictItemEntity,
+  SysRegionEntity,
+  OrganizationEntity,
+];
