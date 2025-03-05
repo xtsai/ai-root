@@ -1,3 +1,4 @@
 export enum AuthHeaderKeyEnum {
-  XaiCapathaCode = 'xai-captcha-code',
+  XaiCapathaCode = 'xai-capatcha-code',
+  XaiSMSCode = 'xai-sms-code',
 }

@@ -160,7 +160,8 @@ export class SysRoleService {
         ...others,
         name: name ?? find.name,
       })
-      .where({ id }).execute;
+      .where({ id })
+      .execute();
 
     return { ...find, ...others, name: name ?? find.name } as SysRoleEntity;
   }

@@ -7,7 +7,6 @@ import { SystemLoginManager } from '../services';
 import { IUser } from '@tsailab/core-types';
 
 @ApiTags('System admin Auth 模块')
-@Controller()
 @Controller('auth')
 export class AuthController {
   constructor(private readonly loginManager: SystemLoginManager) {}

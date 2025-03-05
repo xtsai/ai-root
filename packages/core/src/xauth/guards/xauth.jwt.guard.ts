@@ -44,7 +44,6 @@ export class XAuthJwtGuard extends AuthGuard('jwt') implements IAuthGuard {
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
-    this.logger.log('>>>>>>>>>>>>>>>>>>>', context);
     const isPublic = this.reflector.getAllAndOverride(PublicApiPropertyName, [
       context.getHandler(),
       context.getClass(),

@@ -11,8 +11,8 @@ import { APIHttpStatus, APIResponse } from '@tsailab/core-types';
 import { instanceToPlain } from 'class-transformer';
 
 @Injectable()
-export class ApiTransformInterceptor implements NestInterceptor {
-  protected logger = new Logger(`@xtsai-core:${ApiTransformInterceptor.name}`);
+export class ApiTransfromInterceptor implements NestInterceptor {
+  protected logger = new Logger(`@xtsai-core:${ApiTransfromInterceptor.name}`);
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const { user: _u } = context.switchToHttp().getRequest();

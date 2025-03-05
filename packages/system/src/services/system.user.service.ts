@@ -71,7 +71,7 @@ export class SysUserService {
     return user;
   }
 
-  async updaetSuser(model: UpdateSUserModel) {
+  async updateSuser(model: UpdateSUserModel) {
     const { id, username, orgid, email, phone, nickname, remark } = model;
     if (!username?.length)
       throw BizException.IllegalParamterError(`用户名必填`);
@@ -290,7 +290,7 @@ export class SysUserService {
    * @param model
    * @returns user entity
    */
-  async createSysUser(model: CreateSUserModel) {
+  async createSysUser(model: CreateSUserModel, userno: string) {
     await this.validCreateSUserModel(model);
     await this.validateExistsForCreate(model);
     const {
@@ -315,7 +315,7 @@ export class SysUserService {
       password: enpw,
       avatar,
       isSuper,
-
+      userno,
       openid,
       orgid,
       status: UserStatusEnum.NORMAL,
@@ -338,7 +338,7 @@ export class SysUserService {
     if (superUsers?.length) {
       return `Super User has been exists.[${superUsers[0].username}]`;
     }
-    // const nextno = await this.nextnoCacher.getNextno(this.nextnoType);
+
     const { uno, value } = await UnoHelper.buildUno(0, ['6489']);
     const time = new Date(1989, 5, 4).setHours(4, 15, 0, 0);
     const pass = XTSAI_INIT_SUPPER_PW;

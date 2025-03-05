@@ -7,10 +7,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { yamlConfigLoader } from '@tsailab/ioredis-mq';
 import { ApiModule } from './api/api.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MysqlTypeormOptionFactory, XAuthJwtGuard } from '@xtsai/core';
+import {
+  ApiTransfromInterceptor,
+  MysqlTypeormOptionFactory,
+  XAuthJwtGuard,
+} from '@xtsai/core';
 import { SystemModule } from '@xtsai/system';
 import { AuthModule } from './auth/auth.module';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -37,6 +41,10 @@ import { APP_GUARD } from '@nestjs/core';
     {
       provide: APP_GUARD,
       useClass: XAuthJwtGuard,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ApiTransfromInterceptor,
     },
     AppService,
   ],

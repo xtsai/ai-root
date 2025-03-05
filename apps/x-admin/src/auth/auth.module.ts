@@ -1,25 +1,20 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './controllers/auth.controller';
 import { AuthService } from './services/auth.service';
-import { RouterModule } from '@nestjs/core';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import {
+  CapatchaService,
   XAuthCacheService,
   XAuthJwtOptionsFactory,
   XAuthJwtStrategy,
 } from '@xtsai/core';
 import { ConfigService } from '@nestjs/config';
 import { SystemLoginManager } from './services';
+import { CapatchaController } from './controllers/capatcha.controller';
 
 @Module({
   imports: [
-    RouterModule.register([
-      {
-        path: 'auth',
-        module: AuthModule,
-      },
-    ]),
     PassportModule.register({
       defaultStrategy: 'jwt',
       property: 'user',
@@ -33,13 +28,14 @@ import { SystemLoginManager } from './services';
       extraProviders: [],
     }),
   ],
-  controllers: [AuthController],
+  controllers: [AuthController, CapatchaController],
   providers: [
     XAuthJwtOptionsFactory,
     XAuthCacheService,
     XAuthJwtStrategy,
     AuthService,
     SystemLoginManager,
+    CapatchaService,
   ],
   exports: [],
 })
