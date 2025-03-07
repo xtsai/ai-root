@@ -10,11 +10,23 @@ import { Column, Entity, Index } from 'typeorm';
   synchronize: true,
   comment: 'Front UI columns',
 })
-export class BotCategoryEntity extends BaseSimpleEntity {
+export class CategoryEntity extends BaseSimpleEntity {
+  @Type(() => Number)
+  @Transform(({ value }) => Number(value))
+  @Column({
+    name: 'pid',
+    type: 'int',
+    nullable: true,
+    default: -1,
+    comment: 'parent id',
+  })
+  pid: number;
+
   @Index()
   @Column({
     name: 'cateno',
     type: 'varchar',
+    length: 64,
     nullable: false,
     comment: 'unique no',
   })
@@ -30,30 +42,19 @@ export class BotCategoryEntity extends BaseSimpleEntity {
   })
   title: string;
 
-  @Type(() => Number)
-  @Transform(({ value }) => Number(value))
-  @Column({
-    name: 'pid',
-    type: 'int',
-    nullable: true,
-    default: -1,
-    comment: 'parent id',
-  })
-  pid: number;
-
   /**
    * reffer PET uuid
    */
   @Type(() => Number)
   @Transform(({ value }) => Number(value))
   @Column({
-    name: 'peid',
+    name: 'uuid',
     type: 'int',
     nullable: true,
     default: 1000,
     comment: 'reffer PET uuid',
   })
-  peid: number;
+  uuid: number;
 
   @Column({
     name: 'icon',
@@ -139,4 +140,6 @@ export class BotCategoryEntity extends BaseSimpleEntity {
     comment: 'category remark back',
   })
   remark: string;
+
+  children: CategoryEntity[];
 }

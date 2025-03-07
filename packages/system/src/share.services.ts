@@ -7,6 +7,8 @@ import {
   DictService,
   SysRegionService,
   SysRoleService,
+  //CMS
+  CategoryService,
   // main
   CustomUserService,
   OrganizationService,
@@ -22,6 +24,8 @@ export const sharedServices: Provider[] = [
   DictService,
   SysRegionService,
   SysRoleService,
+  //CMS
+  CategoryService,
   // main
   CustomUserService,
   OrganizationService,

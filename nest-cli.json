@@ -38,6 +38,15 @@
         "tsConfigPath": "packages/system/tsconfig.pkg.json"
       }
     },
+    "ai-orm": {
+      "type": "library",
+      "root": "packages/ai-orm",
+      "entryFile": "index",
+      "sourceRoot": "packages/ai-orm/src",
+      "compilerOptions": {
+        "tsConfigPath": "packages/ai-orm/tsconfig.pkg.json"
+      }
+    },
     "x-logger": {
       "type": "application",
       "root": "apps/x-logger",
@@ -45,15 +54,6 @@
       "sourceRoot": "apps/x-logger/src",
       "compilerOptions": {
         "tsConfigPath": "apps/x-logger/tsconfig.app.json"
-      }
-    },
-    "bot-orm": {
-      "type": "library",
-      "root": "packages/bot-orm",
-      "entryFile": "index",
-      "sourceRoot": "packages/bot-orm/src",
-      "compilerOptions": {
-        "tsConfigPath": "packages/bot-orm/tsconfig.pkg.json"
       }
     }
   }

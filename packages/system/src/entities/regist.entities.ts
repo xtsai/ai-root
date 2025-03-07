@@ -4,7 +4,7 @@ import {
   SysAccountLogEntity,
   CustomUserLogEntity,
   // CMS
-  BotCategoryEntity,
+  CategoryEntity,
 
   // common
   SysDictEntity,
@@ -23,7 +23,7 @@ export const registedEntities = [
   SysAccountLogEntity,
   CustomUserLogEntity,
   // CMS
-  BotCategoryEntity,
+  CategoryEntity,
   SysDictEntity,
   SysDictItemEntity,
   SysRegionEntity,

@@ -19,12 +19,12 @@
     "noFallthroughCasesInSwitch": false,
     "resolveJsonModule": true,
     "paths": {
+      "@xtsai/ai-orm": ["packages/ai-orm/dist"],
+      "@xtsai/ai-orm/*": ["packages/ai-orm/dist/*"],
       "@xtsai/core": ["packages/core/dist"],
       "@xtsai/core/*": ["packages/core/dist/*"],
       "@xtsai/system": ["packages/system/dist"],
-      "@xtsai/system/*": ["packages/system/dist/*"],
-      "@xtsai/bot-orm": ["packages/bot-orm/dist"],
-      "@xtsai/bot-orm/*": ["packages/bot-orm/dist/*"]
+      "@xtsai/system/*": ["packages/system/dist/*"]
     }
   }
 }

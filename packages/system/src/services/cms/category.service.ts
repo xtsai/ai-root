@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { BotCategoryEntity } from '../../entities';
+import { CategoryEntity } from '../../entities';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
   BizException,
@@ -10,14 +10,16 @@ import {
 import { PageEnum, ROOT_TRRE_NODE_PID } from '@tsailab/core-types';
 import { ErrorCodeEnum, RandomNoType, RandomUtil } from '@xtsai/xai-utils';
 import { CreateCategoryModel, UpdateCategoryModel } from '../../model';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class CategoryService {
   constructor(
-    @InjectRepository(BotCategoryEntity)
-    private readonly categoryRepository: Repository<BotCategoryEntity>,
+    @InjectRepository(CategoryEntity)
+    private readonly categoryRepository: Repository<CategoryEntity>,
   ) {}
 
-  get repository(): Repository<BotCategoryEntity> {
+  get repository(): Repository<CategoryEntity> {
     return this.categoryRepository;
   }
 
@@ -56,11 +58,11 @@ export class CategoryService {
     };
   }
 
-  async createNew(model: CreateCategoryModel): Promise<BotCategoryEntity> {
+  async createNew(model: CreateCategoryModel): Promise<CategoryEntity> {
     const {
       title,
       pid = ROOT_TRRE_NODE_PID,
-      peid = 1000,
+      uuid = 1000,
       icon,
       image,
       group,
@@ -73,23 +75,25 @@ export class CategoryService {
 
     const { no } = await this.createNo();
 
-    const entity = await this.categoryRepository.save(
-      this.categoryRepository.create({
-        cateno: no,
-        title,
-        pid,
-        peid,
-        icon,
-        image,
-        group,
-        tag,
-        path,
-        url,
-        richcontent,
-        remark,
-      }),
+    const entity: Partial<CategoryEntity> = {
+      pid,
+      cateno: no,
+      title,
+      uuid,
+      icon,
+      image,
+      group,
+      tag,
+      path,
+      url,
+      richcontent,
+      remark,
+    };
+
+    const result = await this.categoryRepository.save(
+      this.categoryRepository.create(entity),
     );
-    return entity;
+    return result;
   }
 
   async updateSome(model: UpdateCategoryModel): Promise<boolean> {
@@ -103,7 +107,7 @@ export class CategoryService {
 
     const { affected } = await this.categoryRepository
       .createQueryBuilder()
-      .update(BotCategoryEntity)
+      .update(CategoryEntity)
       .set({
         ...others,
       })
@@ -117,7 +121,7 @@ export class CategoryService {
     const { id, sortno } = dto;
     const { affected } = await this.categoryRepository
       .createQueryBuilder()
-      .update(BotCategoryEntity)
+      .update(CategoryEntity)
       .set({ sortno })
       .where({ id })
       .execute();
@@ -129,7 +133,7 @@ export class CategoryService {
     const { id, status } = dto;
     const { affected } = await this.categoryRepository
       .createQueryBuilder()
-      .update(BotCategoryEntity)
+      .update(CategoryEntity)
       .set({ status })
       .where({ id })
       .execute();

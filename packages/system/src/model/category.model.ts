@@ -26,6 +26,8 @@ export class CreateCategoryModel extends BaseCategoryModel {
   pid: number;
   @IsNotEmpty()
   peid: number;
+  @IsOptional()
+  uuid: number;
 }
 
 export class UpdateCategoryModel extends BaseCategoryModel {
@@ -35,4 +37,6 @@ export class UpdateCategoryModel extends BaseCategoryModel {
   pid: number;
   @IsNotEmpty()
   peid: number;
+  @IsOptional()
+  uuid: number;
 }

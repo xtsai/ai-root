@@ -13,6 +13,7 @@ import {
 @Entity({
   name: 'ai_large_model',
   synchronize: false,
+  comment: 'provider model',
 })
 @Unique('uq_provider_model', ['provider', 'model'])
 export class LargeModelEntity extends BaseEntity {
