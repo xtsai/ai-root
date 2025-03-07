@@ -33,6 +33,7 @@
     "@nestjs/typeorm": "10.0.2",
     "@tsailab/core-types": "0.2.0",
     "@tsailab/ioredis-mq": "0.0.7",
+    "@xtsai/ai-orm": "workspace:*",
     "@xtsai/core": "workspace:*",
     "@xtsai/system": "workspace:*",
     "@xtsai/xai-utils": "0.1.0",

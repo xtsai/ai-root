@@ -1,5 +1,5 @@
 import { BaseSimpleEntity } from '@xtsai/core';
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 import { PromptTemplateTypeEnum } from '../../enum';
 import { Transform, Type } from 'class-transformer';
 import { PromptOptionEntity } from './prompt.option.entity';
@@ -12,7 +12,7 @@ import { PromptOptionEntity } from './prompt.option.entity';
 export class PromptTemplateEntity extends BaseSimpleEntity {
   @Type(() => Number)
   @Transform(({ value }) => Number(value))
-  @PrimaryColumn({
+  @Column({
     type: 'int',
     name: 'uuid',
     nullable: false,
@@ -82,9 +82,6 @@ export class PromptTemplateEntity extends BaseSimpleEntity {
   })
   presetMessages: string;
 
-  @OneToMany(() => PromptOptionEntity, (model) => model.uuid)
-  models: Array<PromptOptionEntity>;
-
   @Column({
     type: 'varchar',
     name: 'remark',
@@ -93,4 +90,7 @@ export class PromptTemplateEntity extends BaseSimpleEntity {
     comment: 'remark',
   })
   remark: string;
+
+  // @OneToMany(() => PromptTemplateEntity, (model) => model.uuid)
+  models: PromptOptionEntity[];
 }

@@ -77,7 +77,7 @@ export class CategoryEntity extends BaseSimpleEntity {
   image: string;
 
   @Column({
-    name: 'icon',
+    name: 'group',
     type: 'varchar',
     length: 100,
     nullable: true,

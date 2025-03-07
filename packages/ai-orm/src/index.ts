@@ -5,4 +5,4 @@ export * from './models';
 export * from './services';
 
 // module
-export * from './bot-orm.module';
+export * from './ai-orm.module';

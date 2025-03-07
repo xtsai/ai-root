@@ -11,6 +11,7 @@ import { PageEnum, ROOT_TRRE_NODE_PID } from '@tsailab/core-types';
 import { ErrorCodeEnum, RandomNoType, RandomUtil } from '@xtsai/xai-utils';
 import { CreateCategoryModel, UpdateCategoryModel } from '../../model';
 import { Injectable } from '@nestjs/common';
+import { FirstCategory } from '.';
 
 @Injectable()
 export class CategoryService {
@@ -143,5 +144,22 @@ export class CategoryService {
 
   createNo(): RandomNoType {
     return RandomUtil.randomNo36BaseTime();
+  }
+
+  async initCategory(): Promise<string | null> {
+    const count = await this.categoryRepository
+      .createQueryBuilder()
+      .where({ pid: -1 })
+      .getCount();
+
+    if (!count) {
+      const no = RandomUtil.randomNo36BaseTime().no;
+      const result = await this.categoryRepository.save({
+        ...FirstCategory,
+        cateno: no,
+      });
+      return `Initialize root category [${result.cateno}] successfully`;
+    }
+    return null;
   }
 }

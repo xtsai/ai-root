@@ -1,7 +1,11 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { NextNoType } from '@tsailab/core-types';
 import { NextnoCacheService } from '@xtsai/core';
-import { OrganizationService, SysUserService } from '@xtsai/system';
+import {
+  CategoryService,
+  OrganizationService,
+  SysUserService,
+} from '@xtsai/system';
 
 @Injectable()
 export class SystemInitializeSevice implements OnModuleInit {
@@ -11,6 +15,7 @@ export class SystemInitializeSevice implements OnModuleInit {
     private readonly organizationService: OrganizationService,
     private readonly sysUserService: SysUserService,
     private readonly nextnoCacheManager: NextnoCacheService,
+    private readonly categoryService: CategoryService,
   ) {}
 
   onModuleInit() {
@@ -18,6 +23,7 @@ export class SystemInitializeSevice implements OnModuleInit {
     this.initRootOrganization();
     this.initUserNos();
     this.initSupperAdminUser();
+    this.initCategory();
   }
 
   private async initRootOrganization() {
@@ -46,6 +52,17 @@ export class SystemInitializeSevice implements OnModuleInit {
       this.logger.log(result);
     } catch (e) {
       this.logger.error(`Initialize root organization error,${e.message}`);
+    }
+  }
+
+  private async initCategory() {
+    try {
+      const result = await this.categoryService.initCategory();
+      if (result) {
+        this.logger.log(`initialize category ${result}`);
+      }
+    } catch (e) {
+      this.logger.error(`Initialize root category error,${e.message}`);
     }
   }
 }

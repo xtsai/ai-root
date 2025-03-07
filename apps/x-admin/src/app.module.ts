@@ -15,6 +15,7 @@ import {
 import { SystemModule } from '@xtsai/system';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
+import { AIOrmModule } from '@xtsai/ai-orm';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
       useClass: MysqlTypeormOptionFactory,
       inject: [ConfigService],
     }),
+    AIOrmModule.forRoot(true),
     SystemModule.forRoot(true),
     ShareModule,
     ApiModule,

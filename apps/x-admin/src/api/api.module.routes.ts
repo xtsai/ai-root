@@ -11,8 +11,8 @@ export const xaiAdminRoutes: XaiModuleRouteMapType = {
     modulePath: 'comm',
     desc: '公共模块',
   },
-  AIAgent: {
-    name: 'Agent',
+  AIBot: {
+    name: 'AIBot',
     modulePath: 'ai',
     desc: '智能体管理',
   },

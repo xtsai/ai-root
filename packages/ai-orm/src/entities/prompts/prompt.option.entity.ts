@@ -1,7 +1,7 @@
 import { BaseSimpleEntity } from '@xtsai/core';
-import { Transform, Type } from 'class-transformer';
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { PromptTemplateEntity } from './prompt.template.entity';
+import { Transform, Type } from 'class-transformer';
 
 @Entity({
   name: 'ai_prompt_options',
@@ -27,6 +27,7 @@ export class PromptOptionEntity extends BaseSimpleEntity {
     comment: 'AI model id',
   })
   modelid: string;
+
   @Column({
     name: 'provider',
     type: 'varchar',
@@ -35,6 +36,7 @@ export class PromptOptionEntity extends BaseSimpleEntity {
     comment: 'AI provider name',
   })
   provider: string;
+
   @Column({
     name: 'model',
     type: 'varchar',
@@ -62,17 +64,6 @@ export class PromptOptionEntity extends BaseSimpleEntity {
   })
   isDefault: boolean;
 
-  @ManyToOne(() => PromptTemplateEntity, (pet) => pet.uuid, {
-    createForeignKeyConstraints: false,
-  })
-  @JoinColumn([
-    {
-      name: 'uuid',
-      referencedColumnName: 'uuid',
-    },
-  ])
-  pet: PromptTemplateEntity;
-
   @Column({
     type: 'varchar',
     name: 'remark',
@@ -80,4 +71,7 @@ export class PromptOptionEntity extends BaseSimpleEntity {
     comment: 'remark',
   })
   remark: string;
+
+  @ManyToOne(() => PromptOptionEntity, (template) => template.uuid)
+  template: PromptTemplateEntity;
 }

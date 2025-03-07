@@ -11,11 +11,11 @@ const sharedProviders: Provider[] = [PromptService];
   providers: [],
   exports: [],
 })
-export class BotOrmModule {
+export class AIOrmModule {
   static forRoot(global: boolean = false): DynamicModule {
     return {
       global,
-      module: BotOrmModule,
+      module: AIOrmModule,
       imports: [ConfigModule, TypeOrmModule.forFeature([...botRegistEntities])],
       providers: [...sharedProviders],
       exports: [...sharedProviders],
