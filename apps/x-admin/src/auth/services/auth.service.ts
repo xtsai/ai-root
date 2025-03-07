@@ -41,7 +41,7 @@ export class AuthService {
     };
 
     const ex = await this.xOptsFactory.getCacheExpireins();
-    this.logger.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>', ex);
+
     await this.redisService.setData(key, tokenUser, ex);
 
     return token;

@@ -18,6 +18,21 @@
       "skipFiles": ["<node_internals>/**"],
       "cwd": "${workspaceFolder}/apps/x-admin",
       "outFiles": ["${workspaceFolder}/apps/x-admin/dist/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "XLog DEBUG",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start:debug", "--", "--inspect-brk"],
+      "autoAttachChildProcesses": true,
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "restart": true,
+      "stopOnEntry": false,
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/apps/x-logger",
+      "outFiles": ["${workspaceFolder}/apps/x-logger/dist/**/*.js"]
     }
   ]
 }

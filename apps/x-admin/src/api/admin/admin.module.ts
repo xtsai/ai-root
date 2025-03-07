@@ -15,6 +15,8 @@ import { RegionManager } from './region/region.manager';
 import { RoleController } from './role/role.controller';
 import { MenuController } from './menu/menu.controller';
 import { RoleManager } from './role/role.manager';
+import { SyslogController } from './audit/syslog.controller';
+import { CustomLogController } from './audit/custom-log.controller';
 
 @Module({
   imports: [],
@@ -28,6 +30,8 @@ import { RoleManager } from './role/role.manager';
     NextNoController,
     RoleController,
     MenuController,
+    SyslogController,
+    CustomLogController,
   ],
   providers: [
     CustomManager,

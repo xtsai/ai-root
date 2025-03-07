@@ -47,6 +47,7 @@
   "peerDependenciesMeta": {},
   "dependencies": {
     "@nestjs/swagger": "8.1.0",
-    "@types/yaml": "1.9.7"
+    "@types/yaml": "1.9.7",
+    "@xtsai/xai-utils": "0.1.0"
   }
 }

@@ -1,5 +1,8 @@
 #
 
+pnpm add cross-env rimraf -D
+
+pnpm add @tsailab/core-types @xtsai/xai-utils
 
 -----
 ## X-admin

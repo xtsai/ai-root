@@ -1,3 +1,4 @@
+import { AuditDetailJson, AuditErrorJson } from '@xtsai/core';
 import { Transform, TransformFnParams, Type } from 'class-transformer';
 import {
   BaseEntity,
@@ -10,7 +11,7 @@ import {
 
 @Entity({
   name: 'sys_user_log',
-  synchronize: false,
+  synchronize: true,
   comment: 'record back-end account logs',
 })
 export class SysAccountLogEntity extends BaseEntity {
@@ -62,7 +63,7 @@ export class SysAccountLogEntity extends BaseEntity {
 
   @Column({
     type: 'varchar',
-    length: 30,
+    length: 128,
     nullable: true,
     name: 'ip',
     comment: 'ip',
@@ -77,32 +78,27 @@ export class SysAccountLogEntity extends BaseEntity {
   })
   detail: string;
 
-  get detailJson(): any {
-    if (!this.detail?.length) return null;
-    try {
-      return JSON.parse(this.detail) as any;
-    } catch (_) {
-      return null;
-    }
-  }
+  detailJson?: AuditDetailJson | null;
 
   @Column({
     type: 'longtext',
-    nullable: false,
+    nullable: true,
     name: 'biz_detail',
     default: null,
     comment: 'biz log detail',
   })
   bizDetail: string;
 
-  get bizDetailJson(): any {
-    if (!this.bizDetail?.length) return null;
-    try {
-      return JSON.parse(this.bizDetail) as any;
-    } catch (_) {
-      return null;
-    }
-  }
+  @Column({
+    type: 'longtext',
+    nullable: true,
+    name: 'error',
+    default: null,
+    comment: 'log error detail',
+  })
+  error: string;
+
+  errorJson?: AuditErrorJson | null;
 
   @Type(() => Boolean)
   @Transform(({ value }) => Boolean(value))
@@ -130,4 +126,21 @@ export class SysAccountLogEntity extends BaseEntity {
     comment: 'Logic delete sign',
   })
   deletedAt?: Date;
+
+  static parseJson(entity: SysAccountLogEntity): SysAccountLogEntity {
+    const { detail, error } = entity;
+    if (detail?.length) {
+      try {
+        entity.detailJson = JSON.parse(detail) as any as AuditDetailJson;
+      } catch (_) {}
+    }
+
+    if (error?.length) {
+      try {
+        entity.errorJson = JSON.parse(error);
+      } catch (_) {}
+    }
+
+    return entity;
+  }
 }

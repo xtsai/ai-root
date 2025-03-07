@@ -33,6 +33,7 @@
   "dependencies": {
     "@nestjs/config": "3.2.3",
     "@tsailab/ioredis-mq": "0.0.7",
+    "@xtsai/xai-utils": "0.1.0",
     "ioredis": "5.4.1",
     "iterate": "0.1.1",
     "ms": "3.0.0-canary.1",

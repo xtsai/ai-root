@@ -2,6 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { IORedisModuleOptions, IORedisMQModule } from '@tsailab/ioredis-mq';
 import { NextnoCacheService } from '@xtsai/core';
+import { SystemLogProducer } from '.';
 
 @Global()
 @Module({
@@ -15,7 +16,7 @@ import { NextnoCacheService } from '@xtsai/core';
       inject: [ConfigService],
     }),
   ],
-  providers: [NextnoCacheService],
-  exports: [NextnoCacheService],
+  providers: [NextnoCacheService, SystemLogProducer],
+  exports: [NextnoCacheService, SystemLogProducer],
 })
 export class ShareModule {}

@@ -20,6 +20,7 @@ export const LotoHeaders = createParamDecorator(
       reqid = await UIDGenerator.genRequestId();
     }
 
+    const originalUrl = request.originalUrl;
     const info: LotoHeadersType = {
       ip: requestIP.getClientIp(request) ?? '',
       uid: user?.id,
@@ -30,6 +31,7 @@ export const LotoHeaders = createParamDecorator(
       session: user ? (user as unknown as IUserSession) : undefined,
       LotoHeaderKeyType: '',
       orgno: user?.orgno ?? '',
+      originalUrl,
     };
     if (typeof info.cliid === 'string') {
       const clit = parseClientType(info.cliid as string);

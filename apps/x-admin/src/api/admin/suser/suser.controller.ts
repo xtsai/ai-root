@@ -18,14 +18,26 @@ import {
   ResetSysUserPwdDto,
 } from '../dto';
 import { UpdateSUserModel } from '@xtsai/system';
-import { BizException, CurrentUser, UpdateUserStatusModel } from '@xtsai/core';
-import { ErrorCodeEnum } from '@xtsai/xai-utils';
-import { IUser } from '@tsailab/core-types';
+import {
+  AuditLogCache,
+  BizException,
+  buildBizDesc,
+  CurrentUser,
+  LotoHeaders,
+  UpdateUserStatusModel,
+} from '@xtsai/core';
+import { ErrorCodeEnum, RandomUtil } from '@xtsai/xai-utils';
+import { IUser, LotoHeadersType } from '@tsailab/core-types';
+import { SystemLogProducer } from '../../../share';
+import { BiztypeEnum } from 'src/enum';
 
 @ApiTags(`${xaiAdminRoutes.System.desc}: 系统管理员`)
 @Controller('suser')
 export class SuserController {
-  constructor(private readonly sysUserManager: SysUserManager) {}
+  constructor(
+    private readonly sysUserManager: SysUserManager,
+    private readonly syslogProducer: SystemLogProducer,
+  ) {}
 
   @ApiOperation({ summary: '获取管理员账号列表' })
   @Get('list')
@@ -47,12 +59,43 @@ export class SuserController {
   }
 
   @ApiOperation({ summary: '重置密码' })
+  @HttpCode(HttpStatus.OK)
   @Post('resetpwd')
-  resetOtherPassword(
+  async resetOtherPassword(
     @Body() dto: ResetSysUserPwdDto,
     @CurrentUser() user: IUser,
+    @LotoHeaders() headers: LotoHeadersType,
   ) {
-    return this.sysUserManager.resetSystemUserPassword(dto, user);
+    const { ip = '', cliid } = headers;
+    const cache: AuditLogCache = {
+      cacheId: RandomUtil.clientUUID(),
+      biztype: BiztypeEnum.SystemResetSUserPassword,
+      bizDetail: buildBizDesc(SysUserManager.name, 'resetSystemUserPassword'),
+      uid: user.id,
+      username: user.username,
+      ip: ip,
+      clientId: cliid,
+      locked: true,
+      detailJson: {
+        body: {
+          ...dto,
+          password: '***',
+        },
+        header: headers,
+      },
+    };
+    try {
+      this.syslogProducer.publicSystemLog(cache);
+      return this.sysUserManager.resetSystemUserPassword(dto, user);
+    } catch (err: any) {
+      cache.errorJson = {
+        code: err?.code,
+        message: err?.message,
+        stack: err?.stack,
+      };
+      this.syslogProducer.publicSystemLog(cache);
+      throw err;
+    }
   }
 
   @ApiOperation({ summary: '重置状态' })
@@ -75,14 +118,46 @@ export class SuserController {
 
   @ApiOperation({ summary: '设为超级管理员' })
   @Post('set_issuper/:id')
-  setIsSuper(@Param('id') id: number, @CurrentUser() user: IUser) {
-    if (!user?.isSuper) {
-      throw BizException.createError(
-        ErrorCodeEnum.USER_NO_PERMISSION,
-        `只有超级管理员才能操作.`,
-      );
+  async setIsSuper(
+    @Param('id') id: number,
+    @CurrentUser() user: IUser,
+    @LotoHeaders() headers: LotoHeadersType,
+  ) {
+    const { ip = '', cliid } = headers;
+    const cache: AuditLogCache = {
+      cacheId: RandomUtil.clientUUID(),
+      biztype: BiztypeEnum.SystemSetSuperUser,
+      bizDetail: buildBizDesc(SysUserManager.name, 'setUserIsSuper'),
+      uid: user.id,
+      username: user.username,
+      ip: ip,
+      clientId: cliid,
+      locked: true,
+      detailJson: {
+        body: {
+          id,
+        },
+        header: headers,
+      },
+    };
+    try {
+      if (!user?.isSuper) {
+        throw BizException.createError(
+          ErrorCodeEnum.USER_NO_PERMISSION,
+          `只有超级管理员才能操作.`,
+        );
+      }
+      await this.syslogProducer.publicSystemLog(cache);
+      return await this.sysUserManager.setUserIsSuper(id, true);
+    } catch (err: any) {
+      cache.errorJson = {
+        code: err?.code,
+        message: err?.message,
+        stack: err?.stack,
+      };
+      await this.syslogProducer.publicSystemLog(cache);
+      throw err;
     }
-    return this.sysUserManager.setUserIsSuper(id, true);
   }
 
   @ApiOperation({ summary: '取消超级管理员' })

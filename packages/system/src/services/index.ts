@@ -1,3 +1,4 @@
+export * from './audit';
 export * from './common';
 export { CustomUserService } from './custom.user.service';
 export { OrganizationService } from './organization.service';

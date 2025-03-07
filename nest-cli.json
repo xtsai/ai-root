@@ -37,6 +37,24 @@
       "compilerOptions": {
         "tsConfigPath": "packages/system/tsconfig.pkg.json"
       }
+    },
+    "x-logger": {
+      "type": "application",
+      "root": "apps/x-logger",
+      "entryFile": "main",
+      "sourceRoot": "apps/x-logger/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/x-logger/tsconfig.app.json"
+      }
+    },
+    "bot-orm": {
+      "type": "library",
+      "root": "packages/bot-orm",
+      "entryFile": "index",
+      "sourceRoot": "packages/bot-orm/src",
+      "compilerOptions": {
+        "tsConfigPath": "packages/bot-orm/tsconfig.pkg.json"
+      }
     }
   }
 }

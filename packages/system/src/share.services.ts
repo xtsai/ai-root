@@ -1,5 +1,8 @@
 import { Provider } from '@nestjs/common';
 import {
+  // audit
+  CustomLogService,
+  SysUserLogService,
   // common
   DictService,
   SysRegionService,
@@ -12,6 +15,9 @@ import {
 } from './services';
 
 export const sharedServices: Provider[] = [
+  // audit
+  CustomLogService,
+  SysUserLogService,
   // common
   DictService,
   SysRegionService,

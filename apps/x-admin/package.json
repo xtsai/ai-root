@@ -8,7 +8,7 @@
   "homepage": "https://github.com/xtsai",
   "scripts": {
     "prebuild": "pnpm install",
-    "build": "nest build",
+    "build": "cross-env STAGE=production nest build",
     "dev": "cross-env STAGE=dev nest start --watch",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -35,7 +35,7 @@
     "@tsailab/ioredis-mq": "0.0.7",
     "@xtsai/core": "workspace:*",
     "@xtsai/system": "workspace:*",
-    "@xtsai/xai-utils": "0.0.8",
+    "@xtsai/xai-utils": "0.1.0",
     "bcrypt": "5.1.1",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.1",
