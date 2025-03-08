@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "build:libs": "pnpm --filter=@xtsai/* run build",
     "format": "prettier --write \"apps/**/*.ts\" \"**/*.json\" \"packages/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -21,7 +22,8 @@
     "test:e2e": "jest --config ./apps/ai-root/test/jest-e2e.json",
     "changeset":"changeset",
     "vp":"changeset version",
-    "publish":"changeset publish --registry=https://registry.npmjs.com/",
+    "publish":"pnpm changeset publish --registry=https://registry.npmjs.com/",
+    "release":"pnpm build:libs && pnpm publish",
     "prepare": "husky"
   },
   "dependencies": {
