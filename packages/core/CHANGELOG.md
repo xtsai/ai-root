@@ -1,5 +1,13 @@
 # @xtsai/core
 
+## 0.0.2
+
+### Patch Changes
+
+- Update
+
+- Update
+
 ## 1.0.3
 
 ### Patch Changes

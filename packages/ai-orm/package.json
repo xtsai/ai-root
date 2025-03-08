@@ -29,6 +29,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },  
+  "homepage": "https://github.com/xtsai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xtsai/ai-root.git"
   },
   "devDependencies": {
     "@nestjs/common": "^10.0.0",
