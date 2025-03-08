@@ -105,7 +105,7 @@
     "moduleNameMapper": {
       "^@xtsai/core(|/.*)$": "<rootDir>/packages/core/dist/$1",
       "^@xtsai/system(|/.*)$": "<rootDir>/packages/system/dist/$1",
-      "^@xtsai/bot-orm(|/.*)$": "<rootDir>/packages/bot-orm/dist/$1"
+      "^@xtsai/ai-orm(|/.*)$": "<rootDir>/packages/ai-orm/dist/$1"
     }
   }
 }

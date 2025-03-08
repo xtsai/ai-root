@@ -1,8 +1,8 @@
 {
   "name": "@xtsai/ai-orm",
-  "version": "0.0.4",
-  "description": "Tsailab library bot-orm",
-  "author": "tsailab",
+  "version": "0.0.1",
+  "description": "xtsai library ai-orm",
+  "author": "lanbery<lanbery@gmail.com>",
   "license": "LICENSE",
   "keywords": [
     "tsai-platform",

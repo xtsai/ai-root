@@ -1,11 +1,11 @@
 {
   "name": "@xtsai/system",
   "version": "0.0.1",
-  "description": "Tsailab library system",
-  "author": "tsailab",
+  "description": "xtsai library system",
+  "author": "lanbery<lanbery@gmail.com>",
   "license": "LICENSE",
   "keywords": [
-    "tsai-platform",
+    "xtsai",
     "system"
   ],
   "main": "dist/index.js",

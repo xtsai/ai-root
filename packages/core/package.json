@@ -1,6 +1,6 @@
 {
   "name": "@xtsai/core",
-  "version": "1.0.2",
+  "version": "0.0.1",
   "description": "xtsai library core",
   "author": "lanbery<lanbery@gmail.com>",
   "license": "LICENSE",
@@ -27,7 +27,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "publish": "pnpm changeset publish --registry=https://registry.npmjs.com/"
+    "rela": "changeset publish --registry=https://registry.npmjs.com/"
   },
   "publishConfig": {
     "access": "public"
