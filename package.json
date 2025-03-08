@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
     "build": "nest build",
     "build:libs": "pnpm --filter=@xtsai/* run build",
     "format": "prettier --write \"apps/**/*.ts\" \"**/*.json\" \"packages/**/*.ts\"",
