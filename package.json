@@ -22,8 +22,8 @@
     "test:e2e": "jest --config ./apps/ai-root/test/jest-e2e.json",
     "changeset":"changeset",
     "vp":"changeset version",
-    "publish":"pnpm changeset publish --registry=https://registry.npmjs.com/",
-    "release":"pnpm build:libs && pnpm publish",
+    "release:only":"changeset publish --registry=https://registry.npmjs.com/",
+    "release":"pnpm build:libs && pnpm release:only",
     "prepare": "husky"
   },
   "dependencies": {
