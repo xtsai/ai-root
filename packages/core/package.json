@@ -1,11 +1,11 @@
 {
   "name": "@xtsai/core",
-  "version": "0.0.1",
-  "description": "Tsailab library core",
-  "author": "tsailab",
+  "version": "1.0.0",
+  "description": "xtsai library core",
+  "author": "lanbery<lanbery@gmail.com>",
   "license": "LICENSE",
   "keywords": [
-    "tsai-platform",
+    "xtsai",
     "core"
   ],
   "main": "dist/index.js",
@@ -16,6 +16,7 @@
     "README.md"
   ],
   "scripts": {
+    "postinstall": "npx only-allow pnpm",
     "build": "pnpm clean && pnpm build:pkg",
     "build:pkg": "tsc --build --verbose --force tsconfig.pkg.json",
     "clean": "rm -rf dist/*",
@@ -42,6 +43,7 @@
     "uid": "2.0.2"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "0.5.1",
     "@nestjs/common": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
     "tslib": "2.8.1",

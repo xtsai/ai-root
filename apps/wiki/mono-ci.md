@@ -73,3 +73,13 @@ pnpm add @nestjs/jwt@10.2.0 @nestjs/passport@10.0.3 passport passport-jwt @types
 pnpm -F x-admin express@4.18.1 helmet js-yaml class-validator@0.14.0 class-transformer@0.5.1
 pnpm -F x-admin 
 ```
+
+## Publish step
+
+```bash
+# build
+pnpm -F xxx build
+pnpm changeset
+pnpm vp
+pnpm publish
+```
