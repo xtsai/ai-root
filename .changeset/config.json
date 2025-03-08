@@ -12,10 +12,7 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "@xtsai/system",
-    "@xtsai/ai-orm"
-  ],
+  "ignore": ["@xtsai/system", "@xtsai/ai-orm","x-admin", "x-logger"],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true,
     "updateInternalDependencies": "patch",
