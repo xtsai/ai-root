@@ -8,15 +8,11 @@
   ],
   "commit": false,
   "fixed": [],
-  "linked": [["@xtsai/core","@xtsai/system"]],
+  "linked": [["@xtsai/core", "@xtsai/system"]],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "@xtsai/ai-orm", 
-    "x-admin",
-    "x-logger"
-  ],
+  "ignore": ["@xtsai/ai-orm", "x-admin", "x-logger"],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true,
     "updateInternalDependencies": "patch",

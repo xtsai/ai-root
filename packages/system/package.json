@@ -1,6 +1,6 @@
 {
   "name": "@xtsai/system",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "xtsai library system",
   "author": "lanbery<lanbery@gmail.com>",
   "license": "LICENSE",
@@ -25,7 +25,10 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "release:only":"changeset publish --registry=https://registry.npmjs.com/",
+    "prerelease":"pnpm build",
+    "release":"pnpm release:only"
   },
   "publishConfig": {
     "access": "public"
