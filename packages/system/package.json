@@ -1,6 +1,6 @@
 {
   "name": "@xtsai/system",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "xtsai library system",
   "author": "lanbery<lanbery@gmail.com>",
   "license": "LICENSE",
@@ -15,6 +15,7 @@
     "LICENSE",
     "README.md"
   ],
+
   "scripts": {
     "build": "pnpm clean && pnpm build:pkg",
     "build:pkg": "tsc --build --verbose --force tsconfig.pkg.json",
@@ -31,7 +32,8 @@
     "release": "pnpm release:only"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "homepage": "https://github.com/xtsai/ai-root/blob/main/packages/system/README.md",
   "repository": {

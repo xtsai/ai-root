@@ -28,7 +28,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },  
   "homepage": "https://github.com/xtsai",
   "repository": {
