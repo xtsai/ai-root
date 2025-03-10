@@ -27,6 +27,11 @@
     "release":"pnpm build:libs && pnpm release:only",
     "prepare": "husky"
   },
+  "homepage": "https://github.com/xtsai/ai-root/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xtsai/ai-root.git"
+  },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
