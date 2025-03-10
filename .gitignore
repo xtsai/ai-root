@@ -43,7 +43,7 @@ lerna-debug.log*
 .env.local
 .env*
 
-**/packages/*/.npmrc 
+packages/*/.npmrc 
 
 # temp directory
 .temp
